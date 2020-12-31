@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học Vuejs cực vui</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- VD1 -->
+    <p>ví dụ 1</p>
+    <div id="app">
+        {{ message }}
+    </div>
+    
+    <!-- VD2 -->
+    <p>Ví dụ 2</p>
+    <div id="app-2">
+        <span v-bind:title="message">
+          Rê chuột lên đây một vài giây để xem thuộc tính `title` được bind!
+        </span>
+    </div>
+
+
+    <!-- VD3 -->
+    <p>Ví dụ 3</p>
+    <div id="app-3">
+        <span v-if="seen">Thoắt ẩn thoắt hiện</span>
+    </div>
+
+
+    <!-- VD4 -->
+    <p>Ví dụ 4</p>
+    <div id="app-4">
+        <ol>
+          <li v-for="todo in todos">
+            {{ todo.text }}
+          </li>
+        </ol>
+    </div>
+
+    <!-- Vd 5-->
+    <p>Ví dụ 5</p>
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="test">Đảo ngược message</button>
+    </div>
+
+    <!-- VD 6-->
+    <p>Ví dụ 6</p>
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+
+
+    <script>
+        var app = new Vue({
+        el: '#app',
+            data: {
+                message: 'Do you wanna build a Vue app?'
+            }
+        })
+
+
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: 'Bạn đã mở trang này vào ' + new Date().toLocaleString()
+            }
+        })
+
+
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: true
+            }
+        })
+
+        var app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                { text: 'Học JavaScript' },
+                { text: 'Học Vue' },
+                { text: 'Xây dựng cái gì đó hay ho' },
+                ]
+            }
+        })
+
+        var app5 = new Vue({
+            el: "#app-5",
+            data: {
+                message : "Xin chào các bạn đến với khóa học lập trình Vuejs"
+            },
+            methods: {
+                test: function(){
+                    this.message =this.message.split(' ').reverse().join(' ')
+                }
+            }
+        })
+
+
+        var app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: 'Hãy sửa thông điệp này'
+            }
+        })
+                    
+    </script>
+
+   
+
+
+
+</body>
+</html>
